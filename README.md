@@ -1,60 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛒 Marketplace Junior Web Developer
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel Version](https://img.shields.io/badge/Laravel-v11.x-FF2D20?style=flat&logo=laravel)](https://laravel.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## About Laravel
+Aplikasi Marketplace sederhana yang dibangun untuk memenuhi standar kompetensi Junior Web Developer. Proyek ini mencakup fitur manajemen produk, kategori, stok, hingga sistem pemesanan otomatis.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur Utama
+* [cite_start]**Autentikasi Keamanan**: Login & Register untuk akses Dashboard Admin[cite: 387, 394].
+* [cite_start]**CRUD Produk & Kategori**: Manajemen data produk lengkap dengan kategori berelasi[cite: 529, 756].
+* [cite_start]**Sistem Upload Gambar**: Integrasi penyimpanan gambar produk ke local storage[cite: 579, 639].
+* [cite_start]**Manajemen Stok Pintar**: Fitur penambahan stok instan dan pengurangan otomatis saat pesanan masuk[cite: 1169, 1313].
+* [cite_start]**Dashboard Admin Modern**: Menggunakan template AdminLTE untuk navigasi yang user-friendly[cite: 41].
+* [cite_start]**Portal Marketplace**: Halaman depan (Landing Page) bagi pembeli untuk melihat katalog produk[cite: 1225].
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
+* [cite_start]**Backend**: Laravel 11 [cite: 15]
+* [cite_start]**Database**: MySQL / MariaDB [cite: 35]
+* [cite_start]**Frontend**: Blade Templating, Bootstrap 5, AdminLTE [cite: 6, 222]
+* [cite_start]**Tools**: Composer, XAMPP [cite: 3, 5]
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Cara Instalasi
 
-## Learning Laravel
+1. **Clone Repositori**
+   ```bash
+   git clone [https://github.com/username/ujikom-app.git](https://github.com/username/ujikom-app.git)
+   cd ujikom-app
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+2. **Instal Dependensi**
+   ```bash
+   composer install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Konfigurasi Environment Salin .env.example menjadi .env dan sesuaikan pengaturan database:**
+   ```bash
+    DB_DATABASE=ujikom-app
+    DB_USERNAME=root    
+    DB_PASSWORD=
 
-## Laravel Sponsors
+4. **Konfigurasi Environment Salin .env.example menjadi .env dan sesuaikan pengaturan database:**
+   ```bash
+   php artisan migrate
+   php artisan db:seed --class=UserSeeder
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Link Storage Buat tautan simbolis untuk folder gambar:**
+   ```bash
+   php artisan storage:link
 
-### Premium Partners
+6. **Jalankan Aplikasi:**
+   ```bash
+    php artisan serve
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+    Akses di: http://127.0.0.1:8000
 
-## Contributing
+🔐 Akun Demo (Admin)
+Email: admin@gmail.com 
+Password: admin123
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# marketplace_laravel
+Dibuat dengan ❤️ untuk program pelatihan Junior Web Developer 2026.
