@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 use App\Models\Order;
 use App\Models\Product;
 
@@ -35,31 +36,34 @@ class FrontController extends Controller
      */
     public function store(Request $request)
     {
+        // 1. Ambil data produk dulu untuk validasi stok
+        $product = Product::findOrFail($request->product_id);
+
+        // 2. Validasi input
         $request->validate([
             'product_id' => 'required|exists:products,id',
-            'name' => 'required|string',
-            'email' => 'required|email',
             'address' => 'required',
-            'total_item' => 'required|numeric|min:1',
+            'total_item' => 'required|numeric|min:1|max:' . $product->stock,
+        ], [
+            // Pesan error kustom untuk stok
+            'total_item.max' => 'Maaf, jumlah pesanan melebihi stok yang tersedia (Maksimal: ' . $product->stock . ').',
         ]);
 
-        $product = \App\Models\Product::findOrFail($request->product_id);
-
-        // 1. Simpan ke tabel order 
+        // 3. Simpan Pesanan
         Order::create([
             'product_id' => $product->id,
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
             'address' => $request->address,
-            'notes' => $request->notes,
+            'notes' => $request->notes, // Ambil dari input notes
             'total_item' => $request->total_item,
             'total_price' => $product->price * $request->total_item,
         ]);
 
-        // 2. LOGIKA PENTING: Kurangi stok produk secara otomatis
+        // 4. Kurangi stok produk
         $product->decrement('stock', $request->total_item);
 
-        return redirect()->back()->with('success', 'Pesanan Anda berhasil diproses!');
+        return redirect()->route('home-page')->with('success', 'Pesanan berhasil diproses!');
     }
 
 

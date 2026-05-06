@@ -24,6 +24,7 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+             @if(Auth::user()->role === 'admin')
                     <li class="nav-item">
                         <a href="{{ route("admin.dashboard") }}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -59,7 +60,14 @@
                              <i class="nav-icon fas fa-warehouse"></i>
                              <p>Stock</p>
                             </a>
-                        </li>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.users.index')}}" class="nav-link {{Request::is('admin/users*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
 
                     
                     <hr class="border-secondary">
@@ -70,6 +78,8 @@
                                     <p>Lihat Marketplace</p>
                             </a>
                     </li>
+
+                    @endif
 
                 </ul>
             </nav>

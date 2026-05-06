@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        // Mengambil semua data produk
+        $products = Product::all();
+
+        // Mengirimkan sebagai JSON
+        return response()->json([
+            'success' => true,
+            'data'    => $products
+        ], 200);
+    }
+}

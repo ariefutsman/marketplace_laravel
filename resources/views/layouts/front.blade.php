@@ -15,6 +15,40 @@
     rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    {{-- CSS untuk membuat gambar seragam --}}
+<style>
+  /* Membuat semua gambar produk memiliki ukuran yang sama */
+  .card {
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;  /* Diubah dari cover menjadi contain */
+    object-position: center;
+    background-color: #f8f9fa;
+  }
+
+  /* Responsif untuk layar kecil */
+  @media (max-width: 768px) {
+    .card-img-top {
+      height: 180px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card-img-top {
+      height: 160px;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -54,6 +88,24 @@
       </div>
     </div>
   </nav>
+
+  <div class="container mt-3">
+      {{-- Tampilkan Pesan Sukses --}}
+      @if(session('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      @endif
+
+      {{-- Tampilkan Pesan Error/Gagal --}}
+      @if(session('error'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ session('error') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      @endif
+  </div>
 
   @yield('content')
 

@@ -16,15 +16,16 @@ class RegisterController extends Controller
     }
 
     public function register(RegisterRequest $request) {
+        $validated = $request->validated();
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
+            'role' => 'customer', // Default pendaftar baru adalah pembeli
         ]);
 
         Auth::login($user);
-
-        return redirect()->route('admin.dashboard')->with('success', 'Register success');
+        return redirect()->route('home-page');
     }
 }

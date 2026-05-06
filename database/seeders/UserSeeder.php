@@ -19,6 +19,12 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('password'),
 
+            ],
+            [
+                'name' => 'Pembeli Demo',
+                'email' => 'customer@gmail.com',
+                'password' => bcrypt('password'),
+                'role' => 'customer', // Tambahkan juga untuk contoh user biasa
             ]
         ];
         foreach ($users as $user) {

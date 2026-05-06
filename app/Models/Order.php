@@ -20,7 +20,10 @@ class Order extends Model
         'notes', 
         'total_item', 
         'total_price',
+
     ];
+
+    
 
     // Relasi ke Product untuk menampilkan nama produk di tabel admin 
     public function product()

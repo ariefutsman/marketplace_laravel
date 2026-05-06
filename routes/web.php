@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     // Admin Route
     Route::get('/', function () {
         return view('pages.home');
@@ -44,6 +45,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     //route stock
     Route::get('/stock', [ProductController::class, 'stockIndex'])->name('admin.stock');
     Route::post('/stock/update/{id}', [ProductController::class, 'updateStock'])->name('admin.stock.update');
+
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+   Route::put('/users/{id}/role', [UserController::class, 'updateRole'])->name('users.update-role');
 
 
 });
