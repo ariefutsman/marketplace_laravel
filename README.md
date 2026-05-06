@@ -53,6 +53,39 @@ Aplikasi Marketplace sederhana yang dibangun untuk memenuhi standar kompetensi J
 
 🔐 Akun Demo (Admin)
 Email: admin@gmail.com 
-Password: admin123
+Password: password
 
-Dibuat dengan ❤️ untuk program pelatihan Junior Web Developer 2026.
+Update
+
+Sistem backend marketplace yang menyediakan API untuk aplikasi mobile (Flutter) dan panel admin berbasis web untuk mengelola produk dan memantau transaksi masuk.
+
+## ✨ Fitur Utama
+- **API Backend**: Endpoint untuk Login, Register, Produk, dan Order menggunakan Laravel Sanctum.
+- **Admin Dashboard**: Mengelola kategori produk, data produk, dan stok.
+- **Order Management**: Panel untuk melihat daftar transaksi masuk beserta detail pemesan.
+- **Auto Stock Update**: Stok produk otomatis berkurang menggunakan trigger `decrement` saat API order dipanggil.
+- **Middleware IsAdmin**: Proteksi route admin agar hanya bisa diakses oleh akun dengan role admin.
+
+## 🚀 Cara Install & Jalankan
+1. Clone repositori ini.
+2. Jalankan `composer install`.
+3. Buat file `.env` baru (`cp .env.example .env`) dan sesuaikan konfigurasi database.
+4. Jalankan `php artisan key:generate`.
+5. Jalankan migrasi dan seeder:
+   ```bash
+   php artisan migrate --seed
+Jalankan server agar bisa diakses oleh perangkat mobile di jaringan yang sama:
+
+Bash
+php artisan serve --host=IP_MACBOOK_ANDA --port=8000
+🛠 Tech Stack
+Laravel 11
+
+Laravel Sanctum (API Auth)
+
+MySQL/MariaDB
+
+Blade Templating (Admin UI)
+
+
+Dibuat dengan ❤️ untuk program pelatihan Junior Web Developer 2026.s
