@@ -38,22 +38,28 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $user = User::where('email', $request->email)->first();
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (!$user || !Hash::make($request->password, ['fallback' => $user->password])) {
-            return response()->json([
-                'message' => 'Email atau Password salah'
-            ], 401);
-        }
+    $user = User::where('email', $request->email)->first();
 
-        $token = $user->createToken('auth_token')->plainTextToken;
-
+    // CEK: Apakah user ada DAN apakah password-nya cocok?
+    if (!$user || !\Hash::check($request->password, $user->password)) {
         return response()->json([
-            'message'      => 'Login sukses',
-            'access_token' => $token,
-            'token_type'   => 'Bearer',
-            'user'         => $user
-        ]);
+            'success' => false,
+            'message' => 'Email atau Password salah!'
+        ], 401); // Kirim kode 401 (Unauthorized)
     }
+
+    $token = $user->createToken('auth_token')->plainTextToken;
+
+    return response()->json([
+        'success' => true,
+        'access_token' => $token,
+        'user' => $user
+    ]);
+}
 }
